@@ -6,7 +6,7 @@ body {
 
 .btn-main {
     width: 22%;
-    height: 20%;
+    height: 10%;
     border: none;
     display: flex;
     justify-content: center;
@@ -17,7 +17,11 @@ body {
 
 .calc-container {
     display: flex;
-    width: 90%;
+    width: 75%;
+}
+
+.header {
+    /**/
 }
 
 #wrapper {
@@ -35,8 +39,9 @@ body {
     width: 70%;
     height: 100%;
     display: flex;
+    flex-direction: column-reverse;
     justify-content: center;
-    align-content: center;
+    align-items: center;
 }
 
 #calculator {
@@ -50,11 +55,11 @@ body {
 
 #calc-header {
     display: flex;
-    flex-direction: row-reverse;
+    justify-content: space-evenly;
 }
 
 #calc-buttons {
     flex-wrap: wrap;
     justify-content: space-evenly;
-    height: 72.5%;
+    height: 65%;
 }
