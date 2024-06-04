@@ -1,3 +1,58 @@
+/* Lato Light */
+@font-face {
+    font-family: 'Lato';
+    src: url(fonts/Lato/Lato-Light.ttf);
+    font-weight: 300;
+    font-style: normal;
+}
+/* Lato Light Italic */
+@font-face {
+    font-family: 'Lato';
+    src: url(fonts/Lato/Lato-LightItalic.ttf);
+    font-weight: 300;
+    font-style: italic;
+}
+
+/* Lato Regular */
+@font-face {
+    font-family: 'Lato';
+    src: url(fonts/Lato/Lato-Regular.ttf);
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Lato Bold */
+@font-face {
+    font-family: 'Lato';
+    src: url(fonts/Lato/Lato-Bold.ttf);
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Lato Bold Italic */
+@font-face {
+    font-family: 'Lato';
+    src: url(fonts/Lato/Lato-BoldItalic.ttf);
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* Lato Black */
+@font-face {
+    font-family: 'Lato';
+    src: url(fonts/Lato/Lato-Black.ttf);
+    font-weight: 900;
+    font-style: normal;
+}
+
+/* Lato Black Italic */
+@font-face {
+    font-family: 'Lato';
+    src: url(fonts/Lato/Lato-BlackItalic.ttf);
+    font-weight: 900;
+    font-style: italic;
+}
+
 body {
     width: 100vw;
     height: 100vh;
@@ -18,10 +73,6 @@ body {
 .calc-container {
     display: flex;
     width: 75%;
-}
-
-.header {
-    /**/
 }
 
 #wrapper {
@@ -55,7 +106,19 @@ body {
 
 #calc-header {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+}
+
+#calc-ans {
+    padding: 10px;
+    font-size: 40px;
+}
+
+#calc-input {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    color: #d3d3d3;
 }
 
 #calc-buttons {
