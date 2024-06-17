@@ -1,6 +1,9 @@
 let number1, number2, operator;
 
-/* Utilities */
+const numberBtns = document.querySelectorAll(".number");
+
+
+/* Utility Functions */
 
 function add(num1, num2) {
     return num1 + num2;
@@ -15,6 +18,10 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
+    if (num2 === 0) {
+        return "Infinity";
+    }
+    
     return num1 / num2;
 }
 
@@ -40,3 +47,13 @@ function operate(num1, num2, operator) {
 
     return ans;
 }
+
+function clear() {
+
+}
+
+function clearAll() {
+
+}
+
+/* Event Handlers */
