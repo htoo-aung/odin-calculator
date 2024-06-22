@@ -1,6 +1,8 @@
 let number1, number2, operator;
 
+const currentOperator = document.getElementById("calc-operator");
 const numberBtns = document.querySelectorAll(".number");
+const operatorBtns = document.querySelectorAll(".operator");
 
 
 /* Utility Functions */
@@ -57,3 +59,9 @@ function clearAll() {
 }
 
 /* Event Handlers */
+
+operatorBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        currentOperator.textContent = btn.textContent;
+    });
+});
