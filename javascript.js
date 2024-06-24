@@ -56,18 +56,9 @@ function operate(val1, val2, operator) {
     return ans;
 }
 
-function activeOperator(string) {
-    if (operator === "" || operator === "=") {
-        return false;
-    }
-    else {
-        return true;
-    }
-}
-
 function clear() {
     display = "0";
-    setDisplay(display);
+    setDisplayVisual(display);
 }
 
 function clearAll() {
@@ -76,10 +67,10 @@ function clearAll() {
     number2 = 0;
     operator = "";
     setOperator(operator);
-    setDisplay(display);
+    setDisplayVisual(display);
 }
 
-function setDisplay(string) {
+function setDisplayVisual(string) {
     displayVisual.textContent = string;
 }
 
@@ -87,8 +78,16 @@ function setClearDisplay(string) {
     clearBtn.textContent = string;
 }
 
-function setOperator(string) {
+function setDisplay(string) {
+    display = string;
+}
+
+function setOperatorVisual(string) {
     operatorVisual.textContent = string;
+}
+
+function setOperator(string) {
+    operator = string;
 }
 
 function setFirstValue(number) {
@@ -123,14 +122,17 @@ numberBtns.forEach((btn) => {
             else {
                 display += btn.textContent;
             }
+
             setClearDisplay("C");
-            setDisplay(display);
+            setDisplayVisual(display);
         });
 });
 
 operatorBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
         setOperator(btn.textContent);
-        operator = btn.textContent;
+        setFirstValue(Number(display));
+        setDisplay("0");
+        setOperatorVisual(btn.textContent);
     });
 });
