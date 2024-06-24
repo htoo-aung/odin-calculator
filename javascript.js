@@ -62,11 +62,11 @@ function clear() {
 }
 
 function clearAll() {
-    display = "0";
-    number1 = 0;
-    number2 = 0;
-    operator = "";
-    setOperator(operator);
+    setFirstValue(0);
+    setSecondValue(0);
+    setOperator("");
+    setDisplay("0");
+    setOperatorVisual(operator);
     setDisplayVisual(display);
 }
 
@@ -111,21 +111,24 @@ clearBtn.addEventListener('click', () => {
 });
 
 numberBtns.forEach((btn) => {
-    let btnClick = btn.addEventListener('click', () => {
-            if (display.length === 9) {
-                removeEventListener(btnClick);
-            }
+    let handleClick = btn.addEventListener('click', () => {
+        if (display.length === 9) {
+            btn.removeEventListener('click', handleClick);
+            return;
+        }
 
-            if (display === "0") {
-                display = btn.textContent
-            }
-            else {
-                display += btn.textContent;
-            }
+        if (display === "0") {
+            display = btn.textContent
+        }
+        else {
+            display += btn.textContent;
+        }
 
-            setClearDisplay("C");
-            setDisplayVisual(display);
-        });
+        setClearDisplay("C");
+        setDisplayVisual(display);
+    });
+
+    btn.addEventListener('click', handleClick);
 });
 
 operatorBtns.forEach((btn) => {
