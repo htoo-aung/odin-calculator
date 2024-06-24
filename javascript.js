@@ -1,6 +1,6 @@
 let display = "0";
-let number1 = 0;
-let number2 = 0;
+let value1 = 0;
+let value2 = 0;
 let operator = "";
 
 const operatorVisual = document.getElementById("calc-operator");
@@ -13,41 +13,41 @@ const clearBtn = document.getElementById("btn-clear");
 
 /* Utility Functions */
 
-function add(num1, num2) {
-    return num1 + num2;
+function add(val1, val2) {
+    return val1 + val2;
 }
 
-function subtract(num1, num2) {
-    return num1 - num2;
+function subtract(val1, val2) {
+    return val1 - val2;
 }
 
-function multiply(num1, num2) {
-    return num1 * num2;
+function multiply(val1, val2) {
+    return val1 * val2;
 }
 
-function divide(num1, num2) {
-    if (num2 === 0) {
+function divide(val1, val2) {
+    if (val2 === 0) {
         return "Infinity";
     }
     
-    return num1 / num2;
+    return val1 / val2;
 }
 
-function operate(num1, num2, operator) {
+function operate(val1, val2, operator) {
     let ans;
 
     switch (operator) {
         case "+":
-            ans = add(num1, num2);
+            ans = add(val1, val2);
             break;
         case "-":
-            ans = subtract(num1, num2);
+            ans = subtract(val1, val2);
             break;
         case "x":
-            ans = multiply(num1, num2);
+            ans = multiply(val1, val2);
             break;
         case "/":
-            ans = divide(num1, num2);
+            ans = divide(val1, val2);
             break;
         default:
             console.log("Empty action received.");
@@ -75,6 +75,14 @@ function changeDisplay(string) {
 
 function changeOperator(string) {
     operatorVisual.textContent = string;
+}
+
+function setFirstValue(number) {
+    value1 = number;
+}
+
+function setSecondValue(number) {
+    value2 = number;
 }
 
 /* Event Listeners */
