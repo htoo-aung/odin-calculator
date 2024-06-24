@@ -56,8 +56,18 @@ function operate(val1, val2, operator) {
     return ans;
 }
 
-function clear() {
+function activeOperator(string) {
+    if (operator === "" || operator === "=") {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
 
+function clear() {
+    display = "0";
+    setDisplay(display);
 }
 
 function clearAll() {
@@ -65,15 +75,19 @@ function clearAll() {
     number1 = 0;
     number2 = 0;
     operator = "";
-    changeOperator(operator);
-    changeDisplay(display);
+    setOperator(operator);
+    setDisplay(display);
 }
 
-function changeDisplay(string) {
+function setDisplay(string) {
     displayVisual.textContent = string;
 }
 
-function changeOperator(string) {
+function setClearDisplay(string) {
+    clearBtn.textContent = string;
+}
+
+function setOperator(string) {
     operatorVisual.textContent = string;
 }
 
@@ -88,7 +102,13 @@ function setSecondValue(number) {
 /* Event Listeners */
 
 clearBtn.addEventListener('click', () => {
-    clearAll();
+    if (clearBtn.textContent === "C") {
+        clear();
+        setClearDisplay("AC");
+    }
+    else {
+        clearAll();
+    }
 });
 
 numberBtns.forEach((btn) => {
@@ -103,13 +123,14 @@ numberBtns.forEach((btn) => {
             else {
                 display += btn.textContent;
             }
-            changeDisplay(display);
+            setClearDisplay("C");
+            setDisplay(display);
         });
 });
 
 operatorBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-        changeOperator(btn.textContent);
+        setOperator(btn.textContent);
         operator = btn.textContent;
     });
 });

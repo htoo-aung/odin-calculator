@@ -78,9 +78,9 @@ body {
     font-family: 'Lato', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.operator {
-    /* background-color: #333399; */
-}
+/* .operator {
+    background-color: #333399;
+} */
 
 #wrapper {
     width: 100%;
@@ -126,7 +126,6 @@ body {
     padding: 10px;
     display: flex;
     align-items: center;
-    color: #d3d3d3;
 }
 
 #calc-buttons {
