@@ -1,8 +1,14 @@
-let number1, number2, operator;
+let display = 0;
+let number1 = 0;
+let number2 = 0;
+let operator = "";
 
-const currentOperator = document.getElementById("calc-operator");
+const operatorVisual = document.getElementById("calc-operator");
+const displayVisual = document.getElementById("calc-display");
+
 const numberBtns = document.querySelectorAll(".number");
 const operatorBtns = document.querySelectorAll(".operator");
+const clearBtn = document.getElementById("btn-clear");
 
 
 /* Utility Functions */
@@ -55,13 +61,42 @@ function clear() {
 }
 
 function clearAll() {
+    display = 0;
+    number1 = 0;
+    number2 = 0;
+    operator = "";
+    changeDisplay(display);
+}
 
+function changeDisplay(string) {
+    displayVisual.textContent = string;
+}
+
+function changeOperator(string) {
+    operatorVisual.textContent = string;
 }
 
 /* Event Handlers */
 
+clearBtn.addEventListener('click', () => {
+    clearAll();
+});
+
+numberBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        if (display === 0) {
+            display = btn.textContent
+        }
+        else {
+            display += btn.textContent;
+        }
+        changeDisplay(display);
+    });
+});
+
 operatorBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-        currentOperator.textContent = btn.textContent;
+        changeOperator(btn.textContent);
+        operator = btn.textContent;
     });
 });

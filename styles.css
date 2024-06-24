@@ -117,7 +117,7 @@ body {
     justify-content: space-between;
 }
 
-#calc-ans {
+#calc-display {
     padding: 10px;
     font-size: 40px;
 }
