@@ -65,6 +65,7 @@ function clearAll() {
     number1 = 0;
     number2 = 0;
     operator = "";
+    changeOperator(operator);
     changeDisplay(display);
 }
 
