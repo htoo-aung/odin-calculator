@@ -1,4 +1,4 @@
-let display = 0;
+let display = "0";
 let number1 = 0;
 let number2 = 0;
 let operator = "";
@@ -61,7 +61,7 @@ function clear() {
 }
 
 function clearAll() {
-    display = 0;
+    display = "0";
     number1 = 0;
     number2 = 0;
     operator = "";
@@ -77,22 +77,26 @@ function changeOperator(string) {
     operatorVisual.textContent = string;
 }
 
-/* Event Handlers */
+/* Event Listeners */
 
 clearBtn.addEventListener('click', () => {
     clearAll();
 });
 
 numberBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-        if (display === 0) {
-            display = btn.textContent
-        }
-        else {
-            display += btn.textContent;
-        }
-        changeDisplay(display);
-    });
+    let btnClick = btn.addEventListener('click', () => {
+            if (display.length === 9) {
+                removeEventListener(btnClick);
+            }
+
+            if (display === "0") {
+                display = btn.textContent
+            }
+            else {
+                display += btn.textContent;
+            }
+            changeDisplay(display);
+        });
 });
 
 operatorBtns.forEach((btn) => {
