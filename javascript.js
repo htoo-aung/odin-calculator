@@ -74,12 +74,12 @@ function setDisplayVisual(string) {
     displayVisual.textContent = string;
 }
 
-function setClearDisplay(string) {
-    clearBtn.textContent = string;
-}
-
 function setDisplay(string) {
     display = string;
+}
+
+function setClearDisplay(string) {
+    clearBtn.textContent = string;
 }
 
 function setOperatorVisual(string) {
