@@ -2,6 +2,7 @@ let display = "0";
 let value1 = 0;
 let value2 = 0;
 let operator = "";
+let equalsActive = false;
 
 const operatorVisual = document.getElementById("calc-operator");
 const displayVisual = document.getElementById("calc-display");
@@ -68,9 +69,11 @@ function clearAll() {
     setDisplay("0");
     setOperatorVisual(operator);
     setDisplayVisual(display);
+    equalsActive = false;
 }
 
 function setDisplayVisual(string) {
+    // A check if string has 9 characters
     displayVisual.textContent = string;
 }
 
@@ -133,9 +136,26 @@ numberBtns.forEach((btn) => {
 
 operatorBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-        setOperator(btn.textContent);
-        setFirstValue(Number(display));
-        setDisplay("0");
-        setOperatorVisual(btn.textContent);
+        if (btn.textContent === "=" && equalsActive) {
+            setFirstValue(Number(display));
+
+            display = operate(value1, value2, operator);
+            setDisplayVisual(display);
+        }
+        else if (btn.textContent === "=") {
+            setOperatorVisual(btn.textContent);
+            setSecondValue(Number(display));
+
+            display = operate(value1, value2, operator);
+            setDisplayVisual(display);
+
+            equalsActive = true;
+        }
+        else {
+            setOperator(btn.textContent);
+            setOperatorVisual(btn.textContent);
+            setFirstValue(Number(display));
+            setDisplay("0");
+        }
     });
 });
