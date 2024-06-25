@@ -50,6 +50,8 @@ function operate(val1, val2, operator) {
         case "/":
             ans = divide(val1, val2);
             break;
+        case "=":
+            return val1;
         default:
             console.log("Empty action received.");
     }
@@ -141,6 +143,7 @@ operatorBtns.forEach((btn) => {
 
             display = operate(value1, value2, operator);
             setDisplayVisual(display);
+            setClearDisplay("C");
         }
         else if (btn.textContent === "=") {
             setOperatorVisual(btn.textContent);
