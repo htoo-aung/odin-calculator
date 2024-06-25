@@ -47,7 +47,7 @@ function operate(val1, val2, operator) {
         case "x":
             ans = multiply(val1, val2);
             break;
-        case "/":
+        case "÷":
             ans = divide(val1, val2);
             break;
         case "=":
