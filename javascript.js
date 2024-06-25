@@ -144,6 +144,7 @@ operatorBtns.forEach((btn) => {
             display = operate(value1, value2, operator);
             setDisplayVisual(display);
             setClearDisplay("C");
+            equalsActive = false;
         }
         else if (btn.textContent === "=") {
             setOperatorVisual(btn.textContent);
