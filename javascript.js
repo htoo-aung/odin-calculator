@@ -34,7 +34,7 @@ function divide(val1, val2) {
     return val1 / val2;
 }
 
-function operate(val1, val2, operator) {
+function calculate(val1, val2, operator) {
     let ans;
 
     switch (operator) {
@@ -50,8 +50,6 @@ function operate(val1, val2, operator) {
         case "÷":
             ans = divide(val1, val2);
             break;
-        case "=":
-            return val1;
         default:
             console.log("Empty action received.");
     }
@@ -62,6 +60,7 @@ function operate(val1, val2, operator) {
 function clear() {
     display = "0";
     setDisplayVisual(display);
+    setClearDisplay("AC");
 }
 
 function clearAll() {
@@ -87,6 +86,10 @@ function setClearDisplay(string) {
     clearBtn.textContent = string;
 }
 
+function shouldDisplayClear() {
+    return display = "0";
+}
+
 function setOperatorVisual(string) {
     operatorVisual.textContent = string;
 }
@@ -105,10 +108,12 @@ function setSecondValue(number) {
 
 /* Event Listeners */
 
+/**
+ * 
+ */
 clearBtn.addEventListener('click', () => {
-    if (clearBtn.textContent === "C") {
+    if (shouldDisplayClear) {
         clear();
-        setClearDisplay("AC");
     }
     else {
         clearAll();
@@ -116,9 +121,8 @@ clearBtn.addEventListener('click', () => {
 });
 
 numberBtns.forEach((btn) => {
-    let handleClick = btn.addEventListener('click', () => {
+    btn.addEventListener('click', () => {
         if (display.length === 9) {
-            btn.removeEventListener('click', handleClick);
             return;
         }
 
@@ -132,34 +136,14 @@ numberBtns.forEach((btn) => {
         setClearDisplay("C");
         setDisplayVisual(display);
     });
-
-    btn.addEventListener('click', handleClick);
 });
 
+/** 
+ * Adds an event listener to the operation buttons.
+ * When the operations are clicked, the active operation is displayed.
+ */
 operatorBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-        if (btn.textContent === "=" && equalsActive) {
-            setFirstValue(Number(display));
-
-            display = operate(value1, value2, operator);
-            setDisplayVisual(display);
-            setClearDisplay("C");
-            equalsActive = false;
-        }
-        else if (btn.textContent === "=") {
-            setOperatorVisual(btn.textContent);
-            setSecondValue(Number(display));
-
-            display = operate(value1, value2, operator);
-            setDisplayVisual(display);
-
-            equalsActive = true;
-        }
-        else {
-            setOperator(btn.textContent);
-            setOperatorVisual(btn.textContent);
-            setFirstValue(Number(display));
-            setDisplay("0");
-        }
+        setOperatorVisual(btn.textContent);
     });
 });
