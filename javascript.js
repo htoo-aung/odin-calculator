@@ -11,6 +11,11 @@ const numberBtns = document.querySelectorAll(".number");
 const operatorBtns = document.querySelectorAll(".operator");
 const clearBtn = document.getElementById("btn-clear");
 
+const divisionBtn = document.getElementById("btn-division");
+const additionBtn = document.getElementById("btn-addition");
+const subtractionBtn = document.getElementById("btn-subtraction");
+const multiplicationBtn = document.getElementById("btn-multiplication");
+
 
 /* Utility Functions */
 
