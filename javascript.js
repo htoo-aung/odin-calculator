@@ -39,7 +39,7 @@ function divide(val1, val2) {
     return val1 / val2;
 }
 
-function calculate(val1, val2, operator) {
+function operate(val1, val2, operator) {
     let ans;
 
     switch (operator) {
@@ -87,12 +87,12 @@ function setDisplay(string) {
     display = string;
 }
 
-function setClearDisplay(string) {
-    clearBtn.textContent = string;
+function getDisplayAsNumber() {
+    return Number(display);
 }
 
-function shouldDisplayClear() {
-    return display = "0";
+function setClearDisplay(string) {
+    clearBtn.textContent = string;
 }
 
 function setOperatorVisual(string) {
@@ -117,7 +117,7 @@ function setSecondValue(number) {
  * 
  */
 clearBtn.addEventListener('click', () => {
-    if (shouldDisplayClear) {
+    if (clearBtn.textContent === "C") {
         clear();
     }
     else {
@@ -127,15 +127,17 @@ clearBtn.addEventListener('click', () => {
 
 numberBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
+        const btnPressed = btn.textContent;
+
         if (display.length === 9) {
             return;
         }
 
         if (display === "0") {
-            display = btn.textContent
+            display = btnPressed;
         }
         else {
-            display += btn.textContent;
+            display += btnPressed;
         }
 
         setClearDisplay("C");
@@ -146,9 +148,38 @@ numberBtns.forEach((btn) => {
 /** 
  * Adds an event listener to the operation buttons.
  * When the operations are clicked, the active operation is displayed.
+ * explain more
  */
 operatorBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-        setOperatorVisual(btn.textContent);
+        const btnPressed = btn.textContent;
+        setOperatorVisual(btnPressed);
+
+        if (btnPressed === "=" && equalsActive) {
+            let ans;
+
+            setFirstValue(getDisplayAsNumber());
+            ans = operate(value1, value2, operator);
+            setDisplay(ans);
+            setDisplayVisual(display);
+
+        }
+        else if (btnPressed === "=") {
+            let ans;
+
+            setSecondValue(getDisplayAsNumber());
+            ans = operate(value1, value2, operator);
+            setDisplay(ans);
+            setDisplayVisual(display);
+
+            equalsActive = true;
+        }
+        else {
+            setOperator(btnPressed);
+            setFirstValue(getDisplayAsNumber());
+            setDisplay("0");
+            equalsActive = false;
+        }
+
     });
 });
