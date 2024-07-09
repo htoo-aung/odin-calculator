@@ -3,6 +3,7 @@ let value1 = 0;
 let value2 = 0;
 let operator = "";
 let equalsActive = false;
+let operationActive = false;
 
 const operatorVisual = document.getElementById("calc-operator");
 const displayVisual = document.getElementById("calc-display");
@@ -133,14 +134,15 @@ numberBtns.forEach((btn) => {
             return;
         }
 
-        if (display === "0") {
-            display = btnPressed;
+        if (equalsActive) {
+            setDisplay(btnPressed)
+            equalsActive = false;
         }
-        else if (equalsActive) {
-            display = btnPressed;
+        else if (display === "0") {
+            setDisplay(btnPressed);
         }
         else {
-            display += btnPressed;
+            setDisplay(display + btnPressed);
         }
 
         setClearDisplay("C");
@@ -181,7 +183,9 @@ operatorBtns.forEach((btn) => {
             setOperator(btnPressed);
             setFirstValue(getDisplayAsNumber());
             setDisplay("0");
+
             equalsActive = false;
+            operationActive = true;
         }
 
     });
