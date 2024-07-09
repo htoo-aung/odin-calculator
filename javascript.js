@@ -136,6 +136,9 @@ numberBtns.forEach((btn) => {
         if (display === "0") {
             display = btnPressed;
         }
+        else if (equalsActive) {
+            display = btnPressed;
+        }
         else {
             display += btnPressed;
         }
