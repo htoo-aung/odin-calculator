@@ -77,6 +77,7 @@ function clearAll() {
     setOperatorVisual(operator);
     setDisplayVisual(display);
     equalsActive = false;
+    operationActive = false;
 }
 
 function setDisplayVisual(string) {
@@ -160,29 +161,42 @@ operatorBtns.forEach((btn) => {
         const btnPressed = btn.textContent;
         setOperatorVisual(btnPressed);
 
-        if (btnPressed === "=" && equalsActive) {
+        if (btnPressed === "=") {
             let ans;
+            
+            if (operationActive) {
+                setSecondValue(getDisplayAsNumber());
+                ans = operate(value1, value2, operator);
+                setDisplayVisual(ans);
 
-            setFirstValue(getDisplayAsNumber());
-            ans = operate(value1, value2, operator);
-            setDisplay(ans);
-            setDisplayVisual(display);
-
-        }
-        else if (btnPressed === "=") {
-            let ans;
-
-            setSecondValue(getDisplayAsNumber());
-            ans = operate(value1, value2, operator);
-            setDisplay(ans);
-            setDisplayVisual(display);
+                setFirstValue(ans);
+            }
+            else {
+                ans = operate(value1, value2, operator);
+                setDisplayVisual(ans);
+                setFirstValue(ans);
+            }
 
             equalsActive = true;
+            operationActive = false;
         }
         else {
-            setOperator(btnPressed);
-            setFirstValue(getDisplayAsNumber());
+            let ans;
+
+            if (operationActive) {
+                setSecondValue(getDisplayAsNumber());
+                ans = operate(value1, value2, operator);
+                setDisplayVisual(ans);
+                
+                setFirstValue(ans);
+                setSecondValue(0);
+            }
+            else {
+                setFirstValue(getDisplayAsNumber());
+            }
+
             setDisplay("0");
+            setOperator(btnPressed);
 
             equalsActive = false;
             operationActive = true;
