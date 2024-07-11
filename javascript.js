@@ -177,6 +177,8 @@ operatorBtns.forEach((btn) => {
                 setFirstValue(ans);
             }
 
+            setDisplay(ans);
+
             equalsActive = true;
             operationActive = false;
         }
