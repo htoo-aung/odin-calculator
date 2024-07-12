@@ -12,10 +12,7 @@ const numberBtns = document.querySelectorAll(".number");
 const operatorBtns = document.querySelectorAll(".operator");
 const clearBtn = document.getElementById("btn-clear");
 
-const divisionBtn = document.getElementById("btn-division");
-const additionBtn = document.getElementById("btn-addition");
-const subtractionBtn = document.getElementById("btn-subtraction");
-const multiplicationBtn = document.getElementById("btn-multiplication");
+const decimalBtn = document.getElementById("btn-decimal");
 
 
 /* Utility Functions */
@@ -149,6 +146,19 @@ numberBtns.forEach((btn) => {
         setClearDisplay("C");
         setDisplayVisual(display);
     });
+});
+
+decimalBtn.addEventListener('click', () => {
+
+    if (display.includes(".")) {
+        return;
+    }
+    else {
+        setDisplay(display + decimalBtn.textContent);
+    }
+
+    setClearDisplay("C");
+    setDisplayVisual(display);
 });
 
 /** 
