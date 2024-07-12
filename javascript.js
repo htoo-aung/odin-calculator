@@ -17,26 +17,64 @@ const decimalBtn = document.getElementById("btn-decimal");
 
 /* Utility Functions */
 
+/**
+ * Adds value one and value two.
+ * 
+ * @param {Number} val1 - The first value
+ * @param {Number} val2 - The second value
+ * @returns {Number} The sum of val1 and val2
+ */
 function add(val1, val2) {
     return val1 + val2;
 }
 
+/**
+ * Subtracts the second value from the first one.
+ * 
+ * @param {Number} val1 - The first value
+ * @param {Number} val2 - The second value
+ * @returns {Number} The difference between val1 and val2
+ */
 function subtract(val1, val2) {
     return val1 - val2;
 }
 
+/**
+ * Multiplies value one and value two.
+ * 
+ * @param {Number} val1 - The first value
+ * @param {Number} val2 - The second value
+ * @returns {Number} The product of val1 and val2
+ */
 function multiply(val1, val2) {
     return val1 * val2;
 }
 
+/**
+ * Divides value one and value two.
+ * 
+ * @param {Number} val1 - The first value
+ * @param {Number} val2 - The second value
+ * @returns {Number} The quotient of val1 and val2
+ * @throws {Error} Throws an error is val2 is 0
+ */
 function divide(val1, val2) {
     if (val2 === 0) {
-        return "Infinity";
+        throw new Error("Division by zero is not allowed.");
     }
     
     return val1 / val2;
 }
 
+/**
+ * Performs operation on two values based on specified operator.
+ * 
+ * @param {Number} val1 - The first value
+ * @param {Number} val2 - The second value
+ * @param {String} operator - The operator to be performed ("+", "-", "x", "÷")
+ * @returns {Number} Result of the operation
+ * @throws {Error} Throws an error if invalid operator is provided
+ */
 function operate(val1, val2, operator) {
     let ans;
 
@@ -54,7 +92,7 @@ function operate(val1, val2, operator) {
             ans = divide(val1, val2);
             break;
         default:
-            console.log("Empty action received.");
+            throw new Error("Invalid operator provided.");
     }
 
     return ans;
