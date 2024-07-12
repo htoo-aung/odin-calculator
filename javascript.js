@@ -19,6 +19,7 @@ const decimalBtn = document.getElementById("btn-decimal");
 
 /**
  * Adds value one and value two.
+ * Sum cannot be greater than 999,999,999.
  * 
  * @param {Number} val1 - The first value
  * @param {Number} val2 - The second value
@@ -46,6 +47,7 @@ function subtract(val1, val2) {
 
 /**
  * Multiplies value one and value two.
+ * Product cannot be greater than 999,999,999.
  * 
  * @param {Number} val1 - The first value
  * @param {Number} val2 - The second value
