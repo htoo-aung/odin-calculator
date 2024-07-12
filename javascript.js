@@ -25,7 +25,12 @@ const decimalBtn = document.getElementById("btn-decimal");
  * @returns {Number} The sum of val1 and val2
  */
 function add(val1, val2) {
-    return val1 + val2;
+    if (val1 + val2 > 999999999) {
+        return 999999999;
+    }
+    else {
+        return val1 + val2;
+    }
 }
 
 /**
@@ -47,7 +52,12 @@ function subtract(val1, val2) {
  * @returns {Number} The product of val1 and val2
  */
 function multiply(val1, val2) {
-    return val1 * val2;
+    if (val1 * val2 > 999999999) {
+        return 999999999;
+    }
+    else {
+        return val1 * val2;
+    }
 }
 
 /**
@@ -98,8 +108,13 @@ function operate(val1, val2, operator) {
     return ans;
 }
 
+/**
+ * Clears the display.
+ * 
+ * Sets display to "0" and updates display visual and clear button text.
+ */
 function clear() {
-    display = "0";
+    setDisplay("0");
     setDisplayVisual(display);
     setClearDisplay("AC");
 }
@@ -116,8 +131,7 @@ function clearAll() {
 }
 
 function setDisplayVisual(string) {
-    // A check if string has 9 characters
-    displayVisual.textContent = string;
+    displayVisual.textContent = String(string);
 }
 
 function setDisplay(string) {
