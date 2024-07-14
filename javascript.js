@@ -27,12 +27,13 @@ const negationBtn = document.getElementById("btn-negation");
  * @returns {Number} The sum of val1 and val2
  */
 function add(val1, val2) {
-    if (val1 + val2 > 999999999) {
+    const ans = val1 + val2;
+
+    if (ans > 999999999) {
         return 999999999;
     }
-    else {
-        return val1 + val2;
-    }
+    
+    return ans;
 }
 
 /**
@@ -43,7 +44,9 @@ function add(val1, val2) {
  * @returns {Number} The difference between val1 and val2
  */
 function subtract(val1, val2) {
-    return val1 - val2;
+    const ans = val1 - val2;
+
+    return ans;
 }
 
 /**
@@ -55,12 +58,13 @@ function subtract(val1, val2) {
  * @returns {Number} The product of val1 and val2
  */
 function multiply(val1, val2) {
-    if (val1 * val2 > 999999999) {
+    const ans = val1 * val2;
+
+    if (ans > 999999999) {
         return 999999999;
     }
-    else {
-        return val1 * val2;
-    }
+    
+    return ans;
 }
 
 /**
@@ -72,11 +76,13 @@ function multiply(val1, val2) {
  * @throws {Error} Throws an error is val2 is 0
  */
 function divide(val1, val2) {
+    const ans = val1 / val2;
+
     if (val2 === 0) {
         throw new Error("Division by zero is not allowed.");
     }
     
-    return val1 / val2;
+    return ans;
 }
 
 /**
