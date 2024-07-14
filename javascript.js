@@ -13,6 +13,7 @@ const operatorBtns = document.querySelectorAll(".operator");
 const clearBtn = document.getElementById("btn-clear");
 
 const decimalBtn = document.getElementById("btn-decimal");
+const negationBtn = document.getElementById("btn-negation");
 
 
 /* Utility Functions */
@@ -203,7 +204,6 @@ numberBtns.forEach((btn) => {
 });
 
 decimalBtn.addEventListener('click', () => {
-
     if (display.includes(".")) {
         return;
     }
@@ -212,6 +212,17 @@ decimalBtn.addEventListener('click', () => {
     }
 
     setClearDisplay("C");
+    setDisplayVisual(display);
+});
+
+negationBtn.addEventListener('click', () => {
+    if (display.includes("-")) {
+        display = display.replace("-", "");
+    }
+    else {
+        display = "-" + display;
+    }
+
     setDisplayVisual(display);
 });
 
