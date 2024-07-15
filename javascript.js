@@ -80,7 +80,7 @@ function divide(val1, val2) {
     const ans = val1 / val2;
 
     if (val2 === 0) {
-        setDisplay("ERROR");
+        setDisplay("Error");
         setDisplayVisual(display);
         throw new Error("Division by zero is not allowed.");
     }
@@ -214,6 +214,10 @@ numberBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
         const btnPressed = btn.textContent;
 
+        if (display === "Error") {
+            return;
+        }
+
         if (display.length === 9) {
             return;
         }
@@ -238,6 +242,10 @@ numberBtns.forEach((btn) => {
 });
 
 decimalBtn.addEventListener('click', () => {
+    if (display === "Error") {
+        return;
+    }
+
     if (display.includes(".")) {
         return;
     }
@@ -250,6 +258,10 @@ decimalBtn.addEventListener('click', () => {
 });
 
 negationBtn.addEventListener('click', () => {
+    if (display === "Error") {
+        return;
+    }
+
     if (display.includes("-")) {
         setDisplay(display.replace("-", ""));
     }
@@ -261,6 +273,10 @@ negationBtn.addEventListener('click', () => {
 });
 
 percentBtn.addEventListener('click', () => {
+    if (display === "Error") {
+        return;
+    }
+
     if (display === "0") {
         return;
     }
@@ -280,6 +296,10 @@ operatorBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
         const btnPressed = btn.textContent;
         setOperatorVisual(btnPressed);
+
+        if (display === "Error") {
+            return;
+        }
 
         if (btnPressed === "=") {
             let ans;
@@ -323,6 +343,5 @@ operatorBtns.forEach((btn) => {
             equalsActive = false;
             operationActive = true;
         }
-
     });
 });
