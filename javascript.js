@@ -200,6 +200,9 @@ numberBtns.forEach((btn) => {
         else if (display === "0") {
             setDisplay(btnPressed);
         }
+        else if (display === "-0") {
+            setDisplay("-" + btnPressed);
+        }
         else {
             setDisplay(display + btnPressed);
         }
@@ -248,17 +251,17 @@ operatorBtns.forEach((btn) => {
             if (operationActive) {
                 setSecondValue(getDisplayAsNumber());
                 ans = operate(value1, value2, operator);
-                setDisplayVisual(ans);
+                setDisplayVisual(String(ans));
 
                 setFirstValue(ans);
             }
             else {
                 ans = operate(value1, value2, operator);
-                setDisplayVisual(ans);
+                setDisplayVisual(String(ans));
                 setFirstValue(ans);
             }
 
-            setDisplay(ans);
+            setDisplay(String(ans));
 
             equalsActive = true;
             operationActive = false;
@@ -269,7 +272,7 @@ operatorBtns.forEach((btn) => {
             if (operationActive) {
                 setSecondValue(getDisplayAsNumber());
                 ans = operate(value1, value2, operator);
-                setDisplayVisual(ans);
+                setDisplayVisual(String(ans));
                 
                 setFirstValue(ans);
                 setSecondValue(0);
