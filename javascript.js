@@ -80,6 +80,8 @@ function divide(val1, val2) {
     const ans = val1 / val2;
 
     if (val2 === 0) {
+        setDisplay("ERROR");
+        setDisplayVisual(display);
         throw new Error("Division by zero is not allowed.");
     }
     
@@ -249,10 +251,10 @@ decimalBtn.addEventListener('click', () => {
 
 negationBtn.addEventListener('click', () => {
     if (display.includes("-")) {
-        display = display.replace("-", "");
+        setDisplay(display.replace("-", ""));
     }
     else {
-        display = "-" + display;
+        setDisplay("-" + display);
     }
 
     setDisplayVisual(display);
@@ -263,7 +265,7 @@ percentBtn.addEventListener('click', () => {
         return;
     }
     else {
-        display = divide(getDisplayAsNumber(), 100);
+        setDisplay(divide(getDisplayAsNumber(), 100));
     }
 
     setDisplayVisual(display);
