@@ -14,6 +14,7 @@ const clearBtn = document.getElementById("btn-clear");
 
 const decimalBtn = document.getElementById("btn-decimal");
 const negationBtn = document.getElementById("btn-negation");
+const percentBtn = document.getElementById("btn-percent");
 
 
 /* Utility Functions */
@@ -252,6 +253,17 @@ negationBtn.addEventListener('click', () => {
     }
     else {
         display = "-" + display;
+    }
+
+    setDisplayVisual(display);
+});
+
+percentBtn.addEventListener('click', () => {
+    if (display === "0") {
+        return;
+    }
+    else {
+        display = divide(getDisplayAsNumber(), 100);
     }
 
     setDisplayVisual(display);
