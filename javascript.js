@@ -128,6 +128,11 @@ function clear() {
     setClearDisplay("AC");
 }
 
+/**
+ * Resets the whole calculator.
+ * 
+ * Sets all variables to their original value.
+ */
 function clearAll() {
     setFirstValue(0);
     setSecondValue(0);
@@ -139,14 +144,31 @@ function clearAll() {
     operationActive = false;
 }
 
+/**
+ * Updates the text content of the calculator display with the specified value.
+ * 
+ * @param {String} string - The value to be displayed on the calculator. This value 
+ * will be converted to a string before being set as the text content
+ */
 function setDisplayVisual(string) {
     displayVisual.textContent = String(string);
 }
 
+/**
+ * Updates the display variable.
+ * 
+ * @param {String} string - The new value to be set for the display. This value
+ * will be converted to a string before being assigned to the display variable
+ */
 function setDisplay(string) {
-    display = string;
+    display = String(string);
 }
 
+/**
+ * Get display as type Number.
+ * 
+ * @returns {Number} Display variable as type Number
+ */
 function getDisplayAsNumber() {
     return Number(display);
 }
@@ -251,17 +273,17 @@ operatorBtns.forEach((btn) => {
             if (operationActive) {
                 setSecondValue(getDisplayAsNumber());
                 ans = operate(value1, value2, operator);
-                setDisplayVisual(String(ans));
+                setDisplayVisual(ans);
 
                 setFirstValue(ans);
             }
             else {
                 ans = operate(value1, value2, operator);
-                setDisplayVisual(String(ans));
+                setDisplayVisual(ans);
                 setFirstValue(ans);
             }
 
-            setDisplay(String(ans));
+            setDisplay(ans);
 
             equalsActive = true;
             operationActive = false;
@@ -272,7 +294,7 @@ operatorBtns.forEach((btn) => {
             if (operationActive) {
                 setSecondValue(getDisplayAsNumber());
                 ans = operate(value1, value2, operator);
-                setDisplayVisual(String(ans));
+                setDisplayVisual(ans);
                 
                 setFirstValue(ans);
                 setSecondValue(0);
