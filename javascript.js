@@ -176,6 +176,11 @@ function getDisplayAsNumber() {
     return Number(display);
 }
 
+/**
+ * Sets the clear button text content.
+ * 
+ * @param {String} string - The new value for the text content for the clear button
+ */
 function setClearDisplay(string) {
     clearBtn.textContent = string;
 }

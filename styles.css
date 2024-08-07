@@ -1,3 +1,5 @@
+@import 'node_modules/modern-normalize/modern-normalize.css';
+
 /* Lato Light */
 @font-face {
     font-family: 'Lato';
@@ -60,6 +62,10 @@ body {
     height: 100vh;
     margin: 0;
     font-family: 'Lato', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+button:hover {
+    background-color:  #A9A9A9;
 }
 
 .btn-main {
